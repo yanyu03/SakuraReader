@@ -47,3 +47,32 @@ html,body,#root{height:100%;min-height:0}
 
 /* Opt-in transition is driven by Web Animations on EPUB host; no constant GPU layer. */
 .motion-setting{display:flex;align-items:center;gap:10px;color:var(--sub);font-size:14px;line-height:1.5}.motion-setting input{accent-color:var(--brand);width:18px;height:18px;flex-shrink:0}
+
+/* SakuraUI mobile app shell: desktop is intentionally unchanged. */
+.mobile-reader-nav{display:none}
+@media(max-width:767px){
+ .app{height:100dvh;padding-top:env(safe-area-inset-top,0px)}
+ .head{height:52px;min-height:52px;padding-inline:12px}
+ .layout{position:relative;flex:1;min-height:0}
+ .shelf{position:absolute;left:0;top:0;bottom:0;width:min(88vw,340px);max-height:none;z-index:120;box-shadow:8px 0 28px var(--shadow);border-radius:0 12px 12px 0;overscroll-behavior:contain}
+ .work{padding:6px;gap:6px}
+ .toolbar{padding:6px 10px;border-radius:8px}
+ .toolbar .eyebrow,.toolbar .booktitle small{display:none}
+ .toolbar .booktitle strong{font-size:14px}
+ .reading{gap:6px}
+ .paper{border-radius:8px}
+ .paper footer{display:none}
+ .mobile-reader-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;flex:0 0 auto;min-height:56px;padding-bottom:env(safe-area-inset-bottom,0px);border-top:1px solid var(--border);background:var(--card)}
+ .mobile-reader-nav button{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;min-width:0;min-height:52px;color:var(--sub);background:transparent;border:0;font-size:11px}
+ .mobile-reader-nav button:active{background:var(--accent);color:var(--brand)}
+ .mobile-reader-nav button:disabled{opacity:.45}
+ .mobile-reader-nav span{white-space:nowrap}
+ .epub{padding:4px 10px}
+ .inspector{position:absolute;left:6px;right:6px;bottom:calc(60px + env(safe-area-inset-bottom,0px));width:auto;max-height:55dvh;z-index:110;border-radius:12px;box-shadow:0 -8px 24px var(--shadow)}
+ .app.immersive .head,.app.immersive .toolbar{display:none}
+ .app.immersive .work{padding:0;gap:0}
+ .app.immersive .paper{border:0;border-radius:0}
+ .app.immersive .epub{padding:4px 8px}
+}
+@media(max-width:479px){.toolbar .controls{width:auto;display:flex;grid-template-columns:none}.toolbar .secondary{width:auto;min-height:38px;padding:0 10px}.toolbar .booktitle{flex-basis:0}.mobile-reader-nav button{min-height:50px}}
+@media(prefers-reduced-motion:reduce){.mobile-reader-nav button{transition:none}}
