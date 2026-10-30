@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "Leaf · Sakura Reader",
+  "short_name": "SakuraReader",
+  "description": "本地优先的 EPUB 阅读器",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff7fa",
+  "theme_color": "#fff7fa",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
