@@ -44,3 +44,6 @@ html,body,#root{height:100%;min-height:0}
  .inspector{max-height:30dvh;flex:0 0 auto;overflow-y:auto}
  .reading footer{flex:0 0 auto}
 }
+
+/* Opt-in transition is driven by Web Animations on EPUB host; no constant GPU layer. */
+.motion-setting{display:flex;align-items:center;gap:10px;color:var(--sub);font-size:14px;line-height:1.5}.motion-setting input{accent-color:var(--brand);width:18px;height:18px;flex-shrink:0}
