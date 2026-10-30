@@ -20,3 +20,27 @@ html{overflow-x:hidden} .layout,.work,.reading,.paper{min-width:0}
 /* Reading viewport: never clip the EPUB without a navigation/scroll alternative. */
 .paper{min-height:0}.epub{overflow:hidden;overscroll-behavior:contain}.epub iframe{display:block;max-width:100%}.flowchoices{display:grid;grid-template-columns:1fr;gap:8px}.flowchoices button{background:var(--muted);border:1px solid var(--border);color:var(--sub);padding:10px;border-radius:6px;text-align:left}.flowchoices button.chosen{background:var(--accent);color:var(--brand);border-color:var(--brand)}
 @media(max-width:767px){.reading{min-height:0}.paper{min-height:360px}.epub{min-height:0;overflow:hidden;touch-action:pan-y}.inspector{flex-shrink:0}}
+
+/* Reader containment hotfix: only the EPUB scroller may grow/scroll.
+   Avoid stacking min-height + viewport-height on a mobile document. */
+html,body,#root{height:100%;min-height:0}
+.app{height:100dvh;min-height:0;overflow:hidden}
+.layout{height:auto;min-height:0;flex:1;overflow:hidden}
+.work{min-height:0;overflow:hidden}
+.reading{min-height:0;overflow:hidden}
+.paper{min-height:0;height:auto;overflow:hidden}
+.epub{height:auto;min-height:0;flex:1 1 0;overflow:hidden;overscroll-behavior:contain}
+.epub.epub-scroll{overflow-y:auto;overflow-x:hidden;touch-action:pan-y;overscroll-behavior-y:contain}
+@media (max-width:767px){
+ .app{height:100dvh;overflow:hidden}
+ .layout{display:flex;flex-direction:column;height:auto;min-height:0;overflow:hidden}
+ .shelf{flex:0 0 auto;max-height:min(30dvh,220px);overflow:auto}
+ .work{flex:1 1 0;min-height:0;overflow:hidden}
+ .toolbar{flex-shrink:0}
+ .reading{flex:1 1 0;min-height:0;overflow:hidden;display:flex;flex-direction:column}
+ .paper{flex:1 1 0;min-height:0;height:auto!important;overflow:hidden}
+ .epub{height:auto!important;min-height:0!important;flex:1 1 0;overflow:hidden}
+ .epub.epub-scroll{overflow-y:auto}
+ .inspector{max-height:30dvh;flex:0 0 auto;overflow-y:auto}
+ .reading footer{flex:0 0 auto}
+}
